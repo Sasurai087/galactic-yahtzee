@@ -1,0 +1,9 @@
+@startuml GalacticYahtzee
+  class Game {
+    item1
+    --
+    item2
+    --
+    item3
+  }
+@enduml
