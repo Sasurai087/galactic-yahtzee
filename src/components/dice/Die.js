@@ -1,18 +1,25 @@
-import React, { Component } from "react";
+import React, { Fragment } from "react";
 import "./Die.css";
 
-class Die extends Component {
-  render() {
-    return (
+//Props: Dice => value(dice value), locked(index of dice), handleClick (function), key, index
+
+const Die = (props) => {
+  const test = () => {
+    console.log(props);
+  };
+
+  return (
+    <Fragment>
       <button
         className={"Die"}
-        style={{ backgroundColor: this.props.locked ? "grey" : "black" }}
-        onClick={this.props.handleClick}
+        style={{ backgroundColor: props.locked ? "grey" : "black" }}
+        onClick={props.handleClick("ahoy")}
       >
-        {this.props.val}
+        {props.value}
       </button>
-    );
-  }
-}
+      <button onClick={test}>Woo</button>
+    </Fragment>
+  );
+};
 
 export default Die;

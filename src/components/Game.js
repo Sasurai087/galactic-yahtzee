@@ -28,7 +28,7 @@ const Game = () => {
     },
   });
 
-  const rollDice = (event) => {
+  const rollDice = () => {
     // roll dice whose indexes are in reroll
     setGameState((prevState) => ({
       dice: prevState.dice.map((d, i) =>
@@ -42,13 +42,14 @@ const Game = () => {
 
   const toggleLocked = (index) => {
     // toggle whether index is in locked or not
-    setGameState((prevState) => ({
-      locked: [
-        ...prevState.locked.slice(0, index),
-        !prevState.locked[index],
-        ...prevState.locked.slice(index + 1),
-      ],
-    }));
+    // setGameState((prevState) => ({
+    //   locked: [
+    //     ...prevState.locked.slice(0, index),
+    //     !prevState.locked[index],
+    //     ...prevState.locked.slice(index + 1),
+    //   ],
+    // }));
+    console.log(index);
   };
 
   const handleScoring = (ruleName, ruleFunction) => {
@@ -58,8 +59,11 @@ const Game = () => {
       rollsLeft: NUM_ROLLS,
       locked: Array(NUM_DICE).fill(false),
     }));
-    this.roll();
+
+    rollDice();
   };
+
+  console.log(gameState);
 
   return (
     <div className="Game">
@@ -83,7 +87,7 @@ const Game = () => {
           </div>
         </section>
       </header>
-      <ScoreTable doScore={handleScoring} scores={gameState.scores} />
+      {/* <ScoreTable onScoring={handleScoring} scores={gameState.scores} /> */}
     </div>
   );
 };
